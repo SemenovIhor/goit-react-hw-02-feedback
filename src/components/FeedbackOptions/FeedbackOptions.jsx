@@ -1,9 +1,9 @@
-export const FeedbackOptions = function ({ countGoodFeedback, countNeutralFeedback, countBadFeedback }) {
+export const FeedbackOptions = function ({ onLeaveFeedback, options }) {
     return (
         <>
-            <button type="button" onClick={countGoodFeedback}>Good</button>
-            <button type="button" onClick={countNeutralFeedback}>Neutral</button>
-            <button type="button" onClick={countBadFeedback}>Bad</button>
+            {options.map((e) => (
+            <button type="button" onClick={() => onLeaveFeedback(e)}>{e}</button>
+            ))}
         </>
     );
 }

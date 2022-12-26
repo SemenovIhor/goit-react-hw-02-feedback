@@ -10,24 +10,10 @@ export class App extends Component {
     bad: 0
   }
 
-  countGoodFeedback = () => {
+  onLeaveFeedback = (options) => {
     this.setState(prevState => {
       return {
-        good: prevState.good + 1,
-      };
-    });
-  }
-  countNeutralFeedback = () => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  }
-  countBadFeedback = () => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad + 1,
+        [options]: prevState[options] + 1,
       };
     });
   }
@@ -48,9 +34,8 @@ export class App extends Component {
       <>
         <Section title="Please leave Feedback">
           <FeedbackOptions
-            countGoodFeedback = {this.countGoodFeedback}
-            countNeutralFeedback = {this.countNeutralFeedback}
-            countBadFeedback = {this.countBadFeedback}
+            onLeaveFeedback = {this.onLeaveFeedback}
+            options={Object.keys(this.state)}
           />
         </Section>
 
